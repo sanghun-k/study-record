@@ -4,6 +4,9 @@
 
 딕셔너리는 key를 이용해서 그에 대응되는 value를 찾을 수 있다. 이것이 딕셔너리의 주 연산이다.
 
+- [method](#method)
+- [소소한 이용](#using)
+
 ## 딕셔너리 선언하기
 
 딕셔너리를 만들기 위한 큰 틀이 2개가 존재한다.
@@ -196,3 +199,147 @@ print(a)
 
 [to method](#method)
 
+## using
+
+- [for문에서 key, value 가져오기](#in-for-loop)
+- [for문, if문으로 딕셔너리 만들기](#make-dict-using-for-if-statement)
+
+- [중첩 딕셔너리](#nested-dictionary)
+- [복사](#copy)
+
+### in for loop
+
+key, value 를 가지고 올 때 
+
+```python
+x = dict(zip(['a', 'b', 'c'], [1, 2, 3]))
+
+# key 
+# for key in x.keys(): 가능
+for key in x:
+    print(key, end=' ')
+print()
+
+# key, value
+for key, value in x.items():
+    print("{}: {}".format(key, value), end=' ')
+print()
+
+# value
+for value in x.values():
+    print(value, end=' ')
+```
+
+[to using](#using)
+
+### make dict using for if statement
+
+컴프리헨션을 이용해서 dict를 만들 수 있다.
+
+> dict클래스 메서드를 사용할 수 있다. 
+>
+> dict.fromkeys(iterable keys[, default]) : iterable keys 를 받아서 딕셔너리를 만든다. 그들의 value 값을 줄 수 있고 주어지지 않는다면 모두 None으로 해서 만든다.
+
+```python
+keys = ['a', 'b', 'c', 'd']
+x = {key: value for key, value in dict.fromkeys(keys).items()}
+y = {key: value for key, value in dict.fromkeys(keys, 0).items()}
+z = {key: 0 for key, value in dict.fromkeys(keys).items()}
+
+print(x)
+print(y)
+print(z)
+```
+
+```python
+{'a': None, 'b': None, 'c': None, 'd': None}
+{'a': 0, 'b': 0, 'c': 0, 'd': 0}
+{'a': 0, 'b': 0, 'c': 0, 'd': 0}
+```
+
+for 문내에서 \<key, value\> 쌍을 지울 수 있을까? 답은 No이다. 딕셔너리의 크기가 변했다는 오류가 발생한다
+
+```python
+x = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+
+for key, value in x.items():
+    if value == 2:
+        del x[key]
+print(x)
+```
+
+```python
+Traceback (most recent call last):
+  File "main.py", line 3, in <module>
+    for key, value in x.items():
+RuntimeError: dictionary changed size during iteration
+```
+
+```python
+x = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+x = {key: value for key, value in x.items() if value != 2}
+print(x)
+```
+
+```python
+{'a': 1, 'c': 3, 'd': 4}
+```
+
+[to using](#using)
+
+### nested dictionary
+
+딕셔너리의 value 값으로 딕셔너리를 가질 수 있다.
+
+```python
+coin = {
+  'bitcoin': {
+    'creator': 'satoshi',
+    'price': 100000000
+  },
+  'etherium': {
+    'creator': 'vitarlik',
+    'price': 2000000
+  },
+  'eos': {
+    'creator': 'dan',
+    'price': 3400
+  }
+}
+
+for coin_name in coin.keys():
+  print("""\
+  name : {}
+  creator : {}
+  price : {}
+  """.format(coin_name, coin[coin_name]['creator'], coin[coin_name]['price']))
+```
+
+[to using](#using)
+
+### copy
+
+copy를 할 때 신경써야하는 부분이 있다. value로 list, dict 등 내용물을 수정할 수 있는 자료형이 있을 때 이러한 딕셔너리를 copy를 한 후에 한쪽 딕셔너리에서 해당 value를 수정한다면 다른 딕셔너리에서도 똑같이 수정된다. 이를 방지하기 위해 완전 새로운 객체로 만들어주는 copy 모듈에서 deepcopy를 사용할 수 있다. 그렇지만 value로 수정되지 않는 문자열이나 숫자 등이 온다면 copy로도 충분히 사용할 수 있다.
+
+```python
+import copy
+
+x = {'a': {'python': 2.7}, 'b': {'python': 3.6}}
+y = x.copy()
+z = copy.deepcopy(x)
+
+print(x)
+print(y)
+print(z)
+x['a']['python'] = 2.75
+print()
+print(x)
+print(y)
+print(z)
+```
+
+![스크린샷 2021-02-07 오후 11.47.32](/python/picture/copy-in-dictionary.png)
+
+그림을 보면 x, y의 value가 같은 객체를 가리키고 있는 것을 볼 수 있다. 반면 z의 value는 독립된 객체를 가짐을 볼 수 있다.
+
+[to using](#using)
