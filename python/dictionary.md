@@ -44,6 +44,8 @@ value에는 모든 자료형이 올 수 있다. 하지만 key에는 리스트, �
 - [setdefault(key[, value])](#setdefault-update) : \<key-value\> 쌍을 추가해준다. value가 주어지지 않는다면 (key, None) 으로 추가해준다
 - [update(key: value)](#setdefault-update) : (key, value) 를 수정 or 추가해준다.
 
+- [back](#딕셔너리)
+
 ### pop popitem
 
 ```python
@@ -203,10 +205,10 @@ print(a)
 
 - [for문에서 key, value 가져오기](#in-for-loop)
 - [for문, if문으로 딕셔너리 만들기](#make-dict-using-for-if-statement)
-
 - [중첩 딕셔너리](#nested-dictionary)
 - [복사](#copy)
 
+- [back](#딕셔너리)
 ### in for loop
 
 key, value 를 가지고 올 때 
