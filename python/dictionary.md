@@ -340,7 +340,7 @@ print(y)
 print(z)
 ```
 
-![스크린샷 2021-02-07 오후 11.47.32](/python/picture/copy-in-dictionary.png)
+![copy-in-dictionary](/python/picture/copy-in-dictionary.png)
 
 그림을 보면 x, y의 value가 같은 객체를 가리키고 있는 것을 볼 수 있다. 반면 z의 value는 독립된 객체를 가짐을 볼 수 있다.
 
