@@ -14,4 +14,4 @@
 ### 시간 복잡도
 |sorting|worst-case(O)|average-case(𝚯)|worst-case(Ω)|
 |----------------|:--------:|:--------:|:--------:|
-|quick sorting|$$n^2 $$|$$nlogn$$|$$nlogn$$|
+|quick sorting|n<sup>2</sup>|nlogn|nlogn|
