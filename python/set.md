@@ -3,6 +3,8 @@
 파이썬이 제공하는 집합을 표현하는 자료형이다. 수학에서 배운 집합과 동일하다.(합집합, 교집합, 차집합 등의 연산이 가능하다)
 
 - [집합 연산 사용](#set-operation)
+- [메서드 사용](#set-method)
+- [집합 표현식 사용](set expression)
 
 ## set operation
 
@@ -118,4 +120,136 @@ print(a.isdisjoint({5, 6, 7, 8}))
 ```
 
 [up](#set-operation)
+
+## set method
+
+- [add](#add)
+- [remove](#remove) , [discard](#discard) , [pop](#pop) , [clear](#clear)
+- [copy](#copy)
+
+[up](#set)
+
+### add
+
+set에 요소를 추가한다. 여기서 단일 요소를 추가한다. 
+
+```python
+a = {1, 2, 3, 4}
+a.add(5)
+print(a)
+# {1, 2, 3, 4, 5}
+
+a.add(5, 6)
+a.add({3, 4}) 
+# 이러한 것들은 오류가 발생
+```
+
+[up to set-method](#set-method)
+
+### remove
+
+set에 특정 요소를 삭제하고 set에 요소가 없다면 오류를 발생시킨다.
+
+```python
+a = {1, 2, 3, 4}
+a.remove(1)
+# 1 삭제
+a.remove(5)
+# 오류 발생
+```
+
+[up to set-method](#set-method)
+
+### discard
+
+set에 특정 요소를 삭제하고 set에 요소가 없더라도 그냥 넘어간다.
+
+```python
+a = {1, 2, 3, 4}
+a.discard(1)
+a.discard(5)
+# 오류 발생 X
+```
+
+[up to set-method](#set-method)
+
+### pop
+
+set에 임의의 요소를 꺼내준다. 만약 빈 set라면 오류를 발생시킨다.
+
+```python
+a = {1, 2}
+# 꺼내지는 순서는 따로 없음. 
+print(a.pop())
+# 1
+print(a.pop())
+# 2
+print(a.pop())
+# Keyerror : 'pop from an empty set'
+```
+
+[up to set-method](#set-method)
+
+### clear
+
+set에 모든 요소를 삭제한다.
+
+```python
+a = {1, 2, 3, 4}
+a.clear()
+print(a)
+# set()
+```
+
+[up to set-method](#set-method)
+
+### copy
+
+a 와 b 는 같은 set 객체를 가리키지만 c 는 별개의 set 객체를 가리킨다.
+
+```python
+a = {1, 2, 3, 4}
+b = a
+c = a.copy()
+
+print(a is b)
+print(a is c)
+print(a == b)
+print(a == c)
+# true
+# false
+# true
+# true
+```
+
+![copy-in-set](/python/picture/copy-in-set.png)
+
+```python
+b.add(5)
+```
+
+![copy-in-set-second](/python/picture/copy-in-set-second.png)
+
+[up to set-method](#set-method)
+
+## set expression
+
+```python
+a = {i for i in 'apple'}
+# a = set(i for i in 'apple')
+print(a)
+# {'a', 'l', 'e', 'p'}
+```
+
+![first-expression-in-set](/python/picture/first-expreesion-in-set)
+
+```python
+a = set(i for i in 'pineapple' if i not in 'apl')
+print(a)
+# {'e', 'i', 'n'}
+```
+
+![second-expression-in-set](/python/picture/second-expression-in-set)
+
+[up](#set)
 
