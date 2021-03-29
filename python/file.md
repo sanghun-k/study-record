@@ -130,7 +130,7 @@ print(lines)
 
 ## file mode
 
-![file mode](/picture/file_mode.png)
+![file mode](study-record/python/picture/file_mode.png)
 
 ## file open and close
 
