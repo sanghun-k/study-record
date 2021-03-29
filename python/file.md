@@ -3,6 +3,7 @@
 - [흐름](#simple-flow)
 - [Write](#file-write)
 - [Read](#file-read)
+- [File mode](#file-mode)
 - [Tip : 파일 열기, 닫기 동시에](#file-open-and-close)
 - [Tip : 파일 읽기](#file-read-iterator)
 
@@ -126,6 +127,10 @@ print(lines)
 ```
 
 파일의 문자열들을 하나의 리스트에 담는다
+
+## file mode
+
+![file mode](/picture/file_mode.png)
 
 ## file open and close
 
